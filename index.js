@@ -10,7 +10,7 @@ var io = require("socket.io")(server);
 
 var mangUser = ['nai'];
 
-server.listen(3000,() =>{
+server.listen(process.env.PORT || 3000,() =>{
 	console.log("ket noi server thanh cong");
 });
 

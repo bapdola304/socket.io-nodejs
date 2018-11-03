@@ -1,5 +1,5 @@
 
-var socket = io("http://localhost:3000/");
+var socket = io("https://naiprochatonline.herokuapp.com/");
 socket.on("server-send-dk-thatbai", (data) =>{
 	alert(data);
 });
