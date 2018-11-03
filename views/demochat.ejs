@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="xuly.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="form-dk col-md-4" id="form-dk">
+			<h4>Your Name!</h4>
+			<input type="text" class="form-control" id="username">
+			<button class="btn btn-primary" id="register">Register</button>
+		</div>
+
+		<div class="form-chat col-md-12" id="form-chat">
+			<div class="col-md-3 user-online">
+				<table class="table table-hover">
+				    <thead>
+				      <tr>
+				        <th>User Online</th>
+				      
+				      </tr>
+				    </thead>
+				    <tbody id="ds-user">
+				     
+				      
+				    </tbody>
+				  </table>
+			</div>
+			<div class="col-md-9 message">
+				<div class="alert alert-info text-right">
+					<span>Hello <span id="show-name"></span>!</span>
+					<button class="btn btn-default" id="logout">Logout</button>
+				</div>
+
+				<div class="form-message" id="form-message">
+					
+				</div>
+
+				<div class="form-send-message col-md-5">
+					<input type="text" class="form-control" placeholder="message..." id="message">
+					<button class="btn btn-primary" id="send-message">Send</button>
+				</div>
+			</div>
+		</div>
+</div>
+</body>
+</html>

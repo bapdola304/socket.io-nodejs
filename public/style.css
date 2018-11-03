@@ -1,0 +1,31 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.form-dk{
+	display: flex;
+	align-items: center;
+}
+.form-message{
+	height: 500px;
+	background: pink;
+}
+.form-send-message{
+	margin-top: 20px;
+	display: flex;
+}
+.form-send-message input,.form-dk input{
+	margin-right: 20px;
+}
+#ds-user td{
+	display: flex;
+}
+#ds-user i{
+	width: 10px;
+	height: 10px;
+	background: green;
+	border-radius: 50%;
+}
+#ds-user span{
+	width: 150px;
+}
