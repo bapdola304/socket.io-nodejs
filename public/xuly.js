@@ -1,5 +1,5 @@
 
-var socket = io("https://naiprochatonline.herokuapp.com/");
+var socket = io("http://localhost:3000/");
 socket.on("server-send-dk-thatbai", (data) =>{
 	alert(data);
 });
@@ -18,8 +18,20 @@ socket.on("server-send-ds-user", data =>{
 	$("#ds-user").html(htmlds);
 });
 
-socket.on("server-send-message", data =>{
-	$("#form-message").append("<div>" + data.name +" : " + data.mess + "</div>");
+socket.on("server-send-message", (data, index) =>{
+	let i=0;
+	$("#form-message").append("<div class="+index + ">" + data.name +" : " + data.mess + "</div>");
+	i++;
+});
+
+socket.on("server-send-message-dagui", data =>{
+let mess = data.map((message, index) =>{
+		return '<div class='+index + '>' + message.name +" : " + message.mess + '</div>';
+	});	
+	let listMess = mess.join('');
+	$("#form-message").html(listMess);
+	
+	
 });
 
 
@@ -41,6 +53,7 @@ $(document).ready(() =>{
 	$("#send-message").click(() =>{
 		let mess = $("#message").val();
 		socket.emit("client-send-message",mess);
+		 $("#form-message").scrollTo('.9');
 	
 	});
 	

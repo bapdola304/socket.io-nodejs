@@ -9,6 +9,14 @@
 .form-message{
 	height: 500px;
 	background: pink;
+	overflow: auto;
+}
+.form-message div{
+	margin: 20px 50px;
+    background: aquamarine;
+    width: 30%;
+    padding: 10px 20px;
+    border-radius: 30px;
 }
 .form-send-message{
 	margin-top: 20px;

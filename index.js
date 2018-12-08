@@ -8,10 +8,11 @@ app.set("views","./views");
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
 
-var mangUser = ['nai'];
+var mangUser = ['Quan ly'];
+var mangMessage = [];
 
-server.listen(process.env.PORT || 3000,() =>{
-	console.log("ket noi server thanh cong");
+server.listen(3000,() =>{
+	console.log("ket noi thanh cong");
 });
 
 io.on("connection",socket =>{
@@ -26,7 +27,10 @@ io.on("connection",socket =>{
 			mangUser.push(user);
 			console.log(mangUser);
 			socket.UserName = data;
+
 			io.sockets.emit("server-send-ds-user", mangUser);
+
+			io.sockets.emit("server-send-message-dagui", mangMessage);
 		}
 	});
 	socket.on("client-logout", () =>{
@@ -35,7 +39,18 @@ io.on("connection",socket =>{
 	});
 	socket.on("client-send-message", data =>{
 		console.log(data);
-		io.sockets.emit("server-send-message", {name: socket.UserName, mess : data});
+		var message = {
+				name: socket.UserName,
+				mess: data
+			}
+			mangMessage.push(message);
+			console.log(mangMessage);
+		io.sockets.emit("server-send-message", message);
+	});
+	socket.on("disconnect",() =>{
+		console.log(socket.UserName + " da ngat ket noi");
+		mangUser.splice(mangUser.indexOf(socket.UserName),1);
+		socket.broadcast.emit("server-send-ds-user", mangUser);
 	});
 	
 });
